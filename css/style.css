@@ -8085,6 +8085,12 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
     text-align: center!important
 }
 
+.text-md-center a:hover {
+    color: #fe9900;    
+    text-decoration: none;
+    outline: none
+}
+
 @media(min-width:480px) {
     .text-sm-left {
         text-align: left!important
@@ -8106,6 +8112,10 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
     }
     .text-md-center {
         text-align: center!important
+    }
+
+    .text-md-center h6 {
+        text-align: left!important
     }
 }
 
@@ -16521,6 +16531,11 @@ a.thumbnail:hover {
     html:not(.lt-ie10) .page .text-md-center {
         text-align: center
     }
+
+    .text-md-center h6 {
+        text-align: left
+    }
+
     html:not(.lt-ie10) .page .text-md-right {
         text-align: right
     }
