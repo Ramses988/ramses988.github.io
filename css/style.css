@@ -1122,7 +1122,7 @@ pre code {
 
     .col-lg-4-new {
         flex: 0 0 23%;
-        max-width: 25%;
+        max-width: 27%;
     }
 
     .col-lg-5 {
@@ -8091,7 +8091,14 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
     outline: none
 }
 
+.fixed-md-title {
+    min-height: 80px
+}
+
 @media(min-width:480px) {
+    .text-md-left {
+        text-align: left!important
+    }
     .text-sm-left {
         text-align: left!important
     }
@@ -8120,6 +8127,9 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
 }
 
 @media(min-width:992px) {
+    .text-md-left {
+        text-align: left!important
+    }
     .text-lg-left {
         text-align: left!important
     }
@@ -8132,6 +8142,9 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
 }
 
 @media(min-width:1200px) {
+    .text-md-left {
+        text-align: left!important
+    }
     .text-xl-left {
         text-align: left!important
     }
@@ -8144,6 +8157,9 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
 }
 
 @media(min-width:1600px) {
+    .text-md-left {
+        text-align: left!important
+    }
     .text-xxl-left {
         text-align: left!important
     }
@@ -18679,7 +18695,8 @@ h1 .label-custom, h2 .label-custom, h3 .label-custom, h4 .label-custom, h5 .labe
 }
 
 .widget-post>a:hover h6 {
-    color: #ffa200
+    /* color: #052dfa */
+    text-decoration: underline
 }
 
 .widget-post h6, .widget-post time {
