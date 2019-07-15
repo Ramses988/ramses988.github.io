@@ -1089,11 +1089,6 @@ pre code {
 
 @media(min-width:992px) {
 
-    .owl-carousel {
-    width: 60%;
-    margin: auto
-    }
-
     .img-fluid {
         height: 200px
     }
@@ -1247,11 +1242,6 @@ pre code {
 
 @media(min-width:1200px) {
 
-    .owl-carousel {
-        width: 60%;
-        margin: auto
-        }
-
     .img-fluid {
         height: 200px
     }
@@ -1398,10 +1388,6 @@ pre code {
 }
 
 @media(min-width:1600px) {
-    .owl-carousel {
-        width: 60%;
-        margin: auto
-        }
 
     .img-fluid {
         height: 200px
@@ -4132,6 +4118,57 @@ input[type=submit].btn-block, input[type=reset].btn-block, input[type=button].bt
 
     .text-md-left {
         text-align: left!important
+    }
+
+    .owl-carousel {
+        max-width: 100%;
+    }
+
+    .owl-stage-outer {
+        margin: 15px;
+    }
+    
+}
+
+@media(min-width:481px) and (max-width:768px) {
+
+    .text-left {
+        font-size: 21px;
+    }
+
+    .text-md-left {
+        text-align: left!important
+    }
+
+    .owl-carousel {
+        max-width: 75%;
+        margin: auto
+    }
+
+    .owl-stage-outer {
+        margin: 15px;
+    }
+    
+}
+
+@media(min-width:768px) and (max-width:1000px) {
+
+    .owl-carousel {
+        max-width: 80%;
+        margin: auto
+    }
+    
+}
+
+@media(min-width:1000px) {
+
+    .owl-carousel {
+        max-width: 55%;
+        margin: auto
+    }
+
+    html .row-65>* {
+        margin-bottom: 65px
     }
     
 }
@@ -22054,17 +22091,17 @@ html .row-50-new>* {
     margin-bottom: 30px
 }
 
-html .row-65 {
+/* html .row-65 {
     margin-bottom: -65px
-}
+} */
 
 html .row-65:empty {
     margin-bottom: 0
 }
 
-html .row-65>* {
+/* html .row-65>* {
     margin-bottom: 65px
-}
+} */
 
 html .row-65-new>* {
     margin-bottom: 20px
