@@ -1089,6 +1089,11 @@ pre code {
 
 @media(min-width:992px) {
 
+    .owl-carousel {
+    width: 60%;
+    margin: auto
+    }
+
     .img-fluid {
         height: 200px
     }
@@ -1242,6 +1247,11 @@ pre code {
 
 @media(min-width:1200px) {
 
+    .owl-carousel {
+        width: 60%;
+        margin: auto
+        }
+
     .img-fluid {
         height: 200px
     }
@@ -1388,6 +1398,10 @@ pre code {
 }
 
 @media(min-width:1600px) {
+    .owl-carousel {
+        width: 60%;
+        margin: auto
+        }
 
     .img-fluid {
         height: 200px
@@ -4108,6 +4122,18 @@ input[type=submit].btn-block, input[type=reset].btn-block, input[type=button].bt
 
 .card-deck .card {
     margin-bottom: 15px
+}
+
+@media(min-width:1px) and (max-width:480px) {
+
+    .text-left {
+        font-size: 21px;
+    }
+
+    .text-md-left {
+        text-align: left!important
+    }
+    
 }
 
 @media(min-width:480px) {
@@ -8096,9 +8122,6 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
 }
 
 @media(min-width:480px) {
-    .text-md-left {
-        text-align: left!important
-    }
     .text-sm-left {
         text-align: left!important
     }
@@ -8193,6 +8216,10 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
 
 .font-weight-bold {
     font-weight: 700!important
+}
+
+.price {
+    font-size: 18px
 }
 
 .font-italic {
@@ -9430,6 +9457,10 @@ mark, .mark {
 
 .page .text-darker {
     color: #434345!important
+}
+
+.text-gr {
+    color: #9b9b9b!important
 }
 
 .page a.text-darker:hover, .page a.text-darker:focus {
@@ -20199,7 +20230,7 @@ html body .offset-top-41 {
 }
 
 html body .offset-top-50 {
-    margin-top: 50px
+    margin-top: 23px
 }
 
 html body .offset-top-66 {
@@ -22017,6 +22048,10 @@ html .row-50:empty {
 
 html .row-50>* {
     margin-bottom: 50px
+}
+
+html .row-50-new>* {
+    margin-bottom: 30px
 }
 
 html .row-65 {
