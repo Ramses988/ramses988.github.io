@@ -9720,6 +9720,39 @@ mark, .mark {
     border-color: #f8d9aa
 }
 
+/* Add */
+
+.btn-primary-grey {
+    color: #fff;
+    background-color: #ccc;
+    border-color: #ccc
+}
+
+.col-lg-borders {
+    border: 1px solid #e1e1e1;
+    padding-top: 15px;  
+    margin-bottom: 40px;
+}
+
+.section-99 {
+    padding-bottom: 98px
+}
+
+.section-lg-111{
+    padding-bottom: 110px
+}
+
+#col-add {
+    margin: 30px 0 30px 0;
+    text-align: right
+}
+
+#price-red {
+    color: indianred;
+}
+
+/* Finished */
+
 .btn-primary-catalog {
     color: #fff;
     background-color: #fe9900;
