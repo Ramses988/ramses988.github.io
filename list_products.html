@@ -12,7 +12,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="css/fonts.css"> -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat:400,700%7CLato:400,700">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
-	  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/style.css">
 
   </head>
@@ -116,7 +116,7 @@
                     <hr class="divider bg-saffron">
                     </div>
                 <div id="col-add">
-                        <a href="#" class="btn btn-info">Добавить продкут</a>
+                    <button class="btn btn-info popup-open">Добавить продкут</button>
                     </div>
               <div class="row col-lg-borders">
                   <div class="col-lg-4">
@@ -189,6 +189,67 @@
                 </div>
           </div>
       </section>
+
+      <!-- Modal Windows -->
+
+        <!-- <div class="fixed-overlay fixed-overlay__modal">
+      <div class="modal fade" tabindex="-1" id="editRow">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalTitle"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="detailsForm">
+                    <input type="hidden" id="id" name="id">
+
+                    <div class="form-group">
+                        <label for="dateTime" class="col-form-label">Ведите Дату</label>
+                        <input class="form-control" id="dateTime" name="dateTime" placeholder="Ведите Дату"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="col-form-label">Описание</label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Описание"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calories" class="col-form-label">Цена</label>
+                        <input type="number" class="form-control" id="calories" name="calories" placeholder="1000">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    <span class="fa fa-close"></span>
+                    Отменить
+                </button>
+                <button type="button" class="btn btn-primary" onclick="save()">
+                    <span class="fa fa-check"></span>
+                    Сохранить
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</div> -->
+      <div class="popup-fade">
+    <div class="popup">
+        <div class="modal-header">
+                <h4 class="modal-title" id="modalTitle">Добавить продукт</h4>
+                <button type="button" class="close popup-close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label class="col-form-label">Укажите ASIN продукта</label>
+                <input class="form-control" placeholder="Введите ASIN">
+                </div>
+                <div class="modal-footer">
+                        <button class="btn-small btn-primary-orange">Сохранить</button>
+                    <button class="btn-small btn-primary-grey" data-dismiss="popup-fade">Отменить</button>
+                    </div>
+    </div>        
+</div>
 
       <footer class="section section-relative section-top-66 section-bottom-34 page-footer bg-gray-base context-dark novi-background" data-preset='{"title":"Footer","category":"main","reload":true,"id":"footer"}'>
         <div class="container">
@@ -294,5 +355,6 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/amz.reviews.min.js"></script>
   </body>
 </html>
