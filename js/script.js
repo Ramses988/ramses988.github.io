@@ -53,16 +53,42 @@ $document.ready(function () {
         //     c.owlCarousel({ autoplay: isNoviBuilder ? false : c.attr("data-autoplay") === "true", loop: isNoviBuilder ? false : c.attr("data-loop") !== "false", items: 1, center: c.attr("data-center") === "true", dotsContainer: c.attr("data-pagination-class") || false, navContainer: c.attr("data-navigation-class") || false, mouseDrag: isNoviBuilder ? false : c.attr("data-mouse-drag") !== "false", nav: c.attr("data-nav") === "true", dots: (isNoviBuilder && c.attr("data-nav") !== "true") ? true : c.attr("data-dots") === "true", dotsEach: c.attr("data-dots-each") ? parseInt(c.attr("data-dots-each"), 10) : false, animateIn: c.attr('data-animation-in') ? c.attr('data-animation-in') : false, animateOut: c.attr('data-animation-out') ? c.attr('data-animation-out') : false, responsive: responsive, navText: c.attr("data-nav-text") ? $.parseJSON(c.attr("data-nav-text")) : [], navClass: c.attr("data-nav-class") ? $.parseJSON(c.attr("data-nav-class")) : ['owl-prev', 'owl-next'] });
     }
     function attachFormValidator(elements) {
+        regula.custom({
+            name: "LenthRange",
+            defaultMessage: "{label} быть от {min} до {max} символов",
+            params: ["min", "max"],
+            validator: function(params) {
+              var min = params["min"];
+              var max = params["max"];
+              if(this.value.length >= min && this.value.length <= max) {
+                  return true;
+              } else {
+                  return false;
+              }
+        }})
+
         for (var i = 0; i < elements.length; i++) { var o = $(elements[i]), v; o.addClass("form-control-has-validation").after("<span class='form-validation'></span>"); v = o.parent().find(".form-validation"); if (v.is(":last-child")) { o.addClass("form-control-last-child"); } }
         elements.on('input change propertychange blur', function (e) {
             var $this = $(this), results; if (e.type !== "blur") { if (!$this.parent().hasClass("has-error")) { return; } }
             if ($this.parents('.rd-mailform').hasClass('success')) { return; }
-            if ((results = $this.regula('validate')).length) { for (i = 0; i < results.length; i++) { $this.siblings(".form-validation").text(results[i].message).parent().addClass("has-error") } } else { $this.siblings(".form-validation").text("").parent().removeClass("has-error") }
-        }).regula('bind'); var regularConstraintsMessages = [{ type: regula.Constraint.Required, newMessage: "The text field is required." }, { type: regula.Constraint.Email, newMessage: "The email is not a valid email." }, { type: regula.Constraint.Numeric, newMessage: "Only numbers are required" }, { type: regula.Constraint.Selected, newMessage: "Please choose an option." }]; for (var i = 0; i < regularConstraintsMessages.length; i++) { var regularConstraint = regularConstraintsMessages[i]; regula.override({ constraintType: regularConstraint.type, defaultMessage: regularConstraint.newMessage }); }
+            if ((results = $this.regula('validate')).length) { for (i = 0; i < results.length; i++) { 
+                $this.siblings(".form-validation").text(results[i].message).parent().addClass("has-error") } } 
+                else { $this.siblings(".form-validation").text("").parent().removeClass("has-error") }
+        }).regula('bind'); var regularConstraintsMessages = [
+            { type: regula.Constraint.Required, newMessage: "The text field is required." }, 
+        { type: regula.Constraint.Email, newMessage: "The email is not a valid email." }, 
+        { type: regula.Constraint.Numeric, newMessage: "Only numbers are required" },
+        { type: regula.Constraint.Selected, newMessage: "Please choose an option." }]; 
+        for (var i = 0; i < regularConstraintsMessages.length; i++) { 
+            var regularConstraint = regularConstraintsMessages[i]; regula.override({ constraintType: regularConstraint.type, defaultMessage: regularConstraint.newMessage }); 
+        }
     }
     function isValidated(elements, captcha) {
         var results, errors = 0; if (elements.length) {
-            for (j = 0; j < elements.length; j++) { var $input = $(elements[j]); if ((results = $input.regula('validate')).length) { for (k = 0; k < results.length; k++) { errors++; $input.siblings(".form-validation").text(results[k].message).parent().addClass("has-error"); } } else { $input.siblings(".form-validation").text("").parent().removeClass("has-error") } }
+            for (j = 0; j < elements.length; j++) { var $input = $(elements[j]); if ((results = $input.regula('validate')).length) { 
+                for (k = 0; k < results.length; k++) { errors++; $input.siblings(".form-validation").text(results[k].message).parent().addClass("has-error"); 
+            } } 
+                else { $input.siblings(".form-validation").text("").parent().removeClass("has-error") } }
             if (captcha) { if (captcha.length) { return validateReCaptcha(captcha) && errors == 0 } }
             return errors == 0;
         }
@@ -91,10 +117,33 @@ $document.ready(function () {
     if (plugins.regula.length) { attachFormValidator(plugins.regula); }
     if (!isNoviBuilder && $html.hasClass('desktop') && $html.hasClass("wow-animation") && $(".wow").length) { new WOW().init(); }
     if (plugins.owl.length) { for (var i = 0; i < plugins.owl.length; i++) { var c = $(plugins.owl[i]); plugins.owl[i] = c; if (!c.parents('.tab-content').length) { initOwlCarousel(c); } } }
+    
     if (plugins.rdNavbar.length) {
-        var navbar = plugins.rdNavbar, aliases = { '0': '-', '480': '-xs-', '768': '-sm-', '992': '-md-', '1200': '-lg-' }, responsiveNavbar = {}; for (var alias in aliases) { responsiveNavbar[alias] = {}; if (navbar.attr('data' + aliases[alias] + 'layout')) responsiveNavbar[alias].layout = navbar.attr('data' + aliases[alias] + 'layout'); else responsiveNavbar[alias].layout = 'rd-navbar-fixed'; if (navbar.attr('data' + aliases[alias] + 'device-layout')) responsiveNavbar[alias].deviceLayout = navbar.attr('data' + aliases[alias] + 'device-layout'); else responsiveNavbar[alias].deviceLayout = 'rd-navbar-fixed'; if (navbar.attr('data' + aliases[alias] + 'hover-on')) responsiveNavbar[alias].focusOnHover = navbar.attr('data' + aliases[alias] + 'hover-on') === 'true'; if (navbar.attr('data' + aliases[alias] + 'auto-height')) responsiveNavbar[alias].autoHeight = navbar.attr('data' + aliases[alias] + 'auto-height') === 'true'; if (navbar.attr('data' + aliases[alias] + 'stick-up-offset')) responsiveNavbar[alias].stickUpOffset = navbar.attr('data' + aliases[alias] + 'stick-up-offset'); if (navbar.attr('data' + aliases[alias] + 'stick-up') && !isNoviBuilder) responsiveNavbar[alias].stickUp = navbar.attr('data' + aliases[alias] + 'stick-up') === 'true'; else responsiveNavbar[alias].stickUp = false; if ($.isEmptyObject(responsiveNavbar[alias])) delete responsiveNavbar[alias]; }
-        navbar.RDNavbar({ stickUpClone: (!isNoviBuilder && navbar.attr("data-stick-up-clone")) ? navbar.attr("data-stick-up-clone") === 'true' : false, stickUpOffset: (navbar.attr("data-stick-up-offset")) ? navbar.attr("data-stick-up-offset") : 1, anchorNavOffset: -78, anchorNav: !isNoviBuilder, anchorNavEasing: 'linear', focusOnHover: !isNoviBuilder, responsive: responsiveNavbar, onDropdownOver: function () { return !isNoviBuilder; } }); if (navbar.attr("data-body-class")) { document.body.className += ' ' + navbar.attr("data-body-class"); }
+        var navbar = plugins.rdNavbar, aliases = { '0': '-', '480': '-xs-', '768': '-sm-', '992': '-md-', '1200': '-lg-' }, 
+        responsiveNavbar = {}; for (var alias in aliases) { 
+            responsiveNavbar[alias] = {}; 
+            if (navbar.attr('data' + aliases[alias] + 'layout')) responsiveNavbar[alias].layout = navbar.attr('data' + aliases[alias] + 'layout'); 
+            else responsiveNavbar[alias].layout = 'rd-navbar-fixed'; 
+            if (navbar.attr('data' + aliases[alias] + 'device-layout')) responsiveNavbar[alias].deviceLayout = navbar.attr('data' + aliases[alias] + 'device-layout'); 
+            else responsiveNavbar[alias].deviceLayout = 'rd-navbar-fixed'; 
+            if (navbar.attr('data' + aliases[alias] + 'hover-on')) responsiveNavbar[alias].focusOnHover = navbar.attr('data' + aliases[alias] + 'hover-on') === 'true'; 
+            if (navbar.attr('data' + aliases[alias] + 'auto-height')) responsiveNavbar[alias].autoHeight = navbar.attr('data' + aliases[alias] + 'auto-height') === 'true'; 
+            if (navbar.attr('data' + aliases[alias] + 'stick-up-offset')) responsiveNavbar[alias].stickUpOffset = navbar.attr('data' + aliases[alias] + 'stick-up-offset'); 
+            if (navbar.attr('data' + aliases[alias] + 'stick-up') && !isNoviBuilder) responsiveNavbar[alias].stickUp = navbar.attr('data' + aliases[alias] + 'stick-up') === 'true'; 
+            else responsiveNavbar[alias].stickUp = false; 
+            if ($.isEmptyObject(responsiveNavbar[alias])) delete responsiveNavbar[alias]; }
+        navbar.RDNavbar({ 
+            stickUpClone: (!isNoviBuilder && navbar.attr("data-stick-up-clone")) ? navbar.attr("data-stick-up-clone") === 'true' : false, 
+            tickUpOffset: (navbar.attr("data-stick-up-offset")) ? navbar.attr("data-stick-up-offset") : 1, 
+            anchorNavOffset: -78, anchorNav: !isNoviBuilder, anchorNavEasing: 'linear', 
+            focusOnHover: !isNoviBuilder, responsive: responsiveNavbar, onDropdownOver: function () { 
+                return !isNoviBuilder; } }); 
+                if (navbar.attr("data-body-class")) { 
+                    document.body.className += ' ' + navbar.attr("data-body-class"); 
+                }
     }
+
+    
     if (plugins.selectFilter.length) { var i; for (i = 0; i < plugins.selectFilter.length; i++) { var select = $(plugins.selectFilter[i]); select.select2({ theme: "bootstrap" }).next().addClass(select.attr("class").match(/(input-sm)|(input-lg)|($)/i).toString().replace(new RegExp(",", 'g'), " ")); } }
     if (!isNoviBuilder && isDesktop) { $().UItoTop({ easingType: 'easeOutQuart', containerClass: 'ui-to-top icon icon-xs icon-circle icon-darker-filled mdi mdi-chevron-up' }); }
     if (plugins.rdMailForm.length) {
