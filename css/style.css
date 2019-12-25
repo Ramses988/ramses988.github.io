@@ -321,9 +321,9 @@ time-month {
         flex: 0 0 25%;
         max-width: 25%;    
     }
-}
 
-@media(min-width:768px) {
+    
+
     .jumbotron-creative-title {
         max-width: 360px
     }
@@ -383,8 +383,23 @@ time-month {
         max-width: 380px;
         transform: translate3d(0,-60%,0);
     }
+}
 
-    
+@media(min-width:768px) and (max-width:992px) {
+    .footer-block_item2 {
+        display: none;    
+    }
+
+    .footer-block_item1 {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+
+    .footer-block_item3 {
+        flex: 0 0 40%;
+        max-width: 40%;    
+    }
+
 }
 
 @media(min-width:992px) {
