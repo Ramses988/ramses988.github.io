@@ -78,37 +78,87 @@
     <footer>
         <div class="container">
             <div id="footer-block_row">
-                <div id="footer-block_item1">
-                    <p>text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                    </p>
+                <div class="footer-block_items footer-block_item1">
+                  <p class="hidden">Найти партнера</p class="hidden">
+                  <div class="footer-creative-divider"></div>
+                  <div class="item-hidden" id="fl-item1">
+                    <div class="footer-bl-item1-1">
+                      <ul>
+                        <li><span class="mdi mdi-menu-right"></span><a href="#">Москва</a></li>
+                        <li><span class="mdi mdi-menu-right"></span><a href="#">Новосибирск</a></li>
+                        <li><span class="mdi mdi-menu-right"></span><a href="#">Другие города</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-bl-item1-2">
+                      <ul>
+                        <li><span class="mdi mdi-menu-right"></span><a href="#">Санкт-Петербург</a></li>
+                        <li><span class="mdi mdi-menu-right"></span><a href="#">Поиск</a></li>
+                        <li><span class="mdi mdi-menu-right"></span><a href="#">Контакты</a></li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                <div id="footer-block_item2">
-                    <p>text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                    </p>
+                <div class="footer-block_items footer-block_item2">
+                  <p class="hidden">Последние новости</p class="hidden">
+                  <div class="footer-creative-divider"></div>
+                  <div class="item-hidden" id="fl-item2">
+                    <a class="post-line" href="#">
+                      <time class="post-line-time" datetime="2019">
+                        <span class="post-line-time-day">25</span>
+                        <span class="post-line-time-month">December</span>
+                      </time>
+                      <p class="post-line-text">Добавлен новый раздел (Поиск инвестора)</p>
+                    </a>
+                    <a class="post-line" href="#">
+                      <time class="post-line-time" datetime="2019">
+                        <span class="post-line-time-day">10</span>
+                        <span class="post-line-time-month">November</span>
+                      </time>
+                      <p class="post-line-text">Как продать свой бизнес правильно?</p class="post-line-text">
+                    </a>
+                  </div>
                 </div> 
-                <div id="footer-block_item3">
-                    <p>text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                        text text text text text text text text text text text text text text text text text text text text text text
-                    </p>
+                <div class="footer-block_items footer-block_item3">
+                  <p class="hidden">Найти инвестора</p>
+                  <div class="footer-creative-divider"></div>
+                    <div class="item-hidden" id="fl-item3">
+                      <div class="footer-bl-item3-1">
+                        <ul>
+                          <li><a href="#"><span class="mdi mdi-menu-right"></span>Москва</a></li>
+                          <li><a href="#"><span class="mdi mdi-menu-right"></span>Новосибирск</a></li>
+                          <li><a href="#"><span class="mdi mdi-menu-right"></span>Другие города</a></li>
+                        </ul>
+                      </div>
+                      <div class="footer-bl-item3-2">
+                        <ul>
+                          <li><a href="#"><span class="mdi mdi-menu-right"></span>Санкт-Петербург</a></li>
+                          <li><a href="#"><span class="mdi mdi-menu-right"></span>Поиск</a></li>
+                          <li><a href="#"><span class="mdi mdi-menu-right"></span>Контакты</a></li>
+                        </ul>
+                      </div>
+                    </div>
                 </div> 
-            </div> 
-        </div> 
+            </div>
+        </div>
+        <diV id="ft-bottom">
+          <span>StartUp Search&nbsp;©&nbsp;2019 Privacy Policy</span>
+        </diV> 
     </footer>
      </div>
+     <!-- Java script-->
+    <script src="js/jquery-3.4.1.min.js"></script>
+     <script>
+       $(document).ready(function() {
+        $(".hidden").click(function(){
+          if ($(window).width() < 750) {
+            var element = $(this).parent().find('.item-hidden');
+            element.toggleClass('active').slideToggle(500);
+            $('.item-hidden').not($(element)).slideUp();
+            $('.item-hidden').not($(element)).removeClass('active');
+          }
+        });
+       });
+     </script>
   </body>
   </html>
   
