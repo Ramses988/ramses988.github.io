@@ -1,0 +1,257 @@
+*, *::before, *::after {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+
+.jc-decoration {
+    position: relative;
+    max-width: 540px;
+    padding: 0 15px 10%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 0
+}
+
+.jc-decoration-item {
+    display: none
+}
+
+.jumbotron-creative-main {
+    position: relative;
+    z-index: 1
+}
+
+.jumbotron-creative-main {
+    width: 100%;
+    padding: 40px 0;
+    text-align: center
+}
+
+h2 {
+    font-size: 28px;
+    line-height: 1.4
+}
+
+.jumbotron-creative *+.form-layout-search-outer {
+    margin-top: 35px
+}
+
+.jumbotron-creative-main .form-layout-search-outer {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.jumbotron-creative-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%
+}
+
+.jumbotron-creative {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#menu {
+    width: 100%;
+    height: 90px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0px 15px;
+}
+
+footer {
+    background: #1087eb;
+}
+
+#one-block_row {
+    background-color: green;
+}
+
+#one-block_item1 {
+    background-color: violet;       
+}
+
+#one-block_item2 {
+    background-color: silver;       
+}
+
+#footer-block_item1 {
+}
+
+#footer-block_item2 {
+}
+
+#footer-block_item3 {   
+}
+
+@media (min-width: 767px) {
+    #one-block_row {
+        display: flex;
+    }
+    
+    #one-block_item1 {
+        flex: 50%;    
+    }
+    
+    #one-block_item2 {  
+        flex: 50%;       
+    }
+    
+    #footer-block_row {
+        display: flex;
+    }
+
+    #footer-block_item1 {
+        flex: 33.33333333333333%;
+    }
+
+    #footer-block_item2 {
+        flex: 33.33333333333333%;        
+    }
+
+    #footer-block_item3 {
+        flex: 33.33333333333333%;        
+    }
+}
+
+@media(min-width:768px) {
+    .jumbotron-creative-title {
+        max-width: 360px
+    }
+
+    h2 {
+        font-size: 35px;
+    }
+
+    .jumbotron-creative-main {
+        padding: 70px 0 120px;
+        max-width: 360px;
+        text-align: left
+    }
+
+    .jc-decoration {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        max-width: 100%;
+        width: 70%;
+        padding: 0
+    }
+    .jc-decoration::after {
+        display: none
+    }
+    .jc-decoration-item {
+        position: absolute;
+        display: block;
+        min-width: 100%;
+        min-height: 100%;
+        padding-bottom: 67.0816%
+    }
+    .jc-decoration-item svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%
+    }
+    .jc-decoration-item-1 {
+        top: -5.5%;
+        left: 1%;
+        fill: #5eb6ff
+    }
+    .jc-decoration-item-2 {
+        top: -5.8%;
+        left: 1.5%;
+        fill: #1087eb
+    }
+    .jc-decoration-image {
+        position: absolute;
+        top: 60%;
+        left: calc(50% - 90px);
+        max-width: 380px;
+        transform: translate3d(0,-60%,0);
+    }
+
+    
+}
+
+@media(min-width:992px) {
+    .jc-decoration {
+        width: calc(100% - 120px)
+    }
+    .jc-decoration-image {
+        max-width: 480px;
+        left: calc(50% - 120px)
+    }
+}
+
+@media(min-width:1200px) {
+    .jumbotron-creative-title {
+        max-width: 100%;
+        padding-right: 80px;
+    }
+
+    h2 {
+        font-size: 48px;
+        line-height: 1.20833
+    }
+
+    .jumbotron-creative-main {
+        max-width: 580px;
+        padding: 50px 0 180px
+    }
+
+    .jumbotron-creative-inner {
+        min-height: 42.1875vw
+    }
+    .jc-decoration {
+        width: calc(100% - 120px)
+    }
+    .jc-decoration-image {
+        left: 50%
+    }
+}
+
+@media(min-width:1600px) {
+    .jumbotron-creative-title {
+        padding-right: 60px
+    }
+
+    .jc-decoration-image {
+        left: calc(50% - 150px);
+        max-width: 750px
+    }
+    .jc-decoration {
+        width: calc(50% + 500px)
+    }
+    .jumbotron-creative-main {
+        max-width: 590px
+    }
+}
