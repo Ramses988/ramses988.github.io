@@ -80,11 +80,6 @@ h2 {
     position: relative;
 }
 
-#menu {
-    width: 100%;
-    height: 90px;
-}
-
 .container {
     width: 100%;
     max-width: 1200px;
@@ -210,6 +205,63 @@ time-month {
     transition: .25s;
 }
 
+.menu {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;
+}
+
+.menu:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: violet;
+    z-index: 2;
+}
+
+.menu_body {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+}
+
+.menu_body img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+}
+
+.logo {
+    max-width: 143px;
+    z-index: 3;
+}
+
+.menu_list {
+    display: flex;
+    position: relative;
+    z-index: 2;
+}
+
+.menu_list li {
+    list-style: none;
+    margin: 0 0 0 30px;
+}
+
+.menu_link {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: .1em;
+    font: 500 13px/20px "Ubuntu",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
 /* MDI icons Start */
 
 @font-face {
@@ -255,10 +307,96 @@ time-month {
     display: none;
 }
 
-
 /* MDI icons End */
 
+.menu_burger {
+    display: none;
+}
+
 @media (max-width: 767px) {
+
+    body.lock {
+        overflow: hidden;
+    }
+
+    .menu_list {
+        display: block;
+    }
+
+    .menu_list li {
+        list-style: none;
+        margin: 0 0 30px 0;
+    }
+
+    .menu:before {
+        background-color: #fff;
+    }
+
+    .menu_link {
+        color: #000;
+    }
+    
+    .menu_body {
+        height: 50px;
+    }
+
+    .menu_burger {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        z-index: 3;
+    }
+
+    .menu_burger:before,
+    .menu_burger:after {
+        content: '';
+        background-color: #000;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+    }
+
+    .menu_burger:before {
+        top: 0;
+    }
+
+    .menu_burger span {
+        position: absolute;
+        background-color: #000;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        top: 9px;
+    }
+
+    .menu_burger:after {
+        bottom: 0;
+    }
+    
+    .menu {
+        box-shadow: 0 3px 16px 0 rgba(0,0,0,.1);
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 270px;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        transition: .35s all cubic-bezier(.65,.05,.36,1);
+        transform: translateX(-110%);
+        background-color: #fff;
+        padding: 70px 10px 20px;
+    }
+
+    .menu_active {
+        transform: translateX(0);
+    }
+
     .item-hidden {
         display: none;
     }
@@ -268,11 +406,19 @@ time-month {
     }
 
     .hidden {
-        padding-top: 24px;
+        padding-top: 15px;
+    }
+
+    .footer-creative-divider {
+        margin: 10px 0 0 0;
     }
 
     .hidden > .mdi {
         display: initial;
+    }
+
+    .footer-block_items > p {
+        font-size: 14px;
     }
 }
 
@@ -320,9 +466,7 @@ time-month {
     .footer-block_item3 {
         flex: 0 0 25%;
         max-width: 25%;    
-    }
-
-    
+    }    
 
     .jumbotron-creative-title {
         max-width: 360px
@@ -413,6 +557,7 @@ time-month {
 }
 
 @media(min-width:1200px) {
+    
     .jumbotron-creative-title {
         max-width: 100%;
         padding-right: 80px;
