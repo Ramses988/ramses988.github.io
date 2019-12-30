@@ -16,11 +16,11 @@
           <div class="menu">
             <div class="container">
               <div class="menu_body">
+                <div class="menu_burger">
+                  <span class="mdi mdi-menu"></span>
+                </div>
                 <div class="logo">
                   <img src="images/logo.png">
-                </div>
-                <div class="menu_burger">
-                  <span></span>
                 </div>
                 <nav>
                   <ul class="menu_list">
@@ -176,6 +176,16 @@
     <script src="js/jquery-3.4.1.min.js"></script>
      <script>
        $(document).ready(function() {
+
+        $(window).scroll(function(){
+	            if($(this).scrollTop()>90){
+	                $('.menu').addClass('fixed');
+	            }
+	            else if ($(this).scrollTop()<90){
+	                $('.menu').removeClass('fixed');
+	            }
+	        });
+
         $(".hidden").click(function(){
           if ($(window).width() < 768) {
             var element = $(this).parent().find('.item-hidden');
