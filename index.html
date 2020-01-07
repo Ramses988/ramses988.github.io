@@ -260,8 +260,10 @@
 
           $('.menu_list li').hover(function() {
             $(this).addClass('focus');
+            $(this).find('.container_dropdown').stop().show('slow');
           }, function() {
-            $(this).removeClass('focus');            
+            $(this).find('.container_dropdown').stop().hide('slow'); 
+            $(this).removeClass('focus');          
           });
 
 

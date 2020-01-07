@@ -354,13 +354,8 @@ footer {
 
 /* MDI icons End */
 
-.menu_burger, .container_dropdown  {
+.menu_burger, .container_dropdown {
     display: none;
-}
-
-.menu_dropdown {
-    opacity: 0;
-    overflow: hidden;
 }
 
 @media (max-width: 310px) {
@@ -487,16 +482,13 @@ footer {
 
 @media (min-width: 768px) {
 
-    .focus .container_dropdown {
+    .container_dropdown {
         position: absolute;
-        display: block;
         top: 100%;
         padding-top: 28px;
     }
 
-    .focus .menu_dropdown {
-        opacity: 1;
-        overflow: visible;
+    .menu_dropdown {
         width: 200px;
         background: #fff;
         z-index: 5;
