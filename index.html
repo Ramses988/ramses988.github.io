@@ -28,50 +28,56 @@
                       <li>
                         <a class="menu_link" href="#">Главная</a>
                       </li>
-                      <li class="fs">
+                      <li>
                         <a class="menu_link" href="#">Поиск инвестора</a>
-                        <ul class="menu_dropdown">
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Москва</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Санкт-Петербург</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Новосибирск</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Другие города</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Поиск Инвестора</a></li>
-                        </ul>
+                        <div class="container_dropdown">
+                          <ul class="menu_dropdown">
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Москва</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Санкт-Петербург</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Новосибирск</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Другие города</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Поиск Инвестора</a></li>
+                          </ul>
+                        </div>
                       </li>
                       <li>
                         <a class="menu_link" href="#">Поиск партнера</a>
-                        <ul class="menu_dropdown">
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Москва</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Санкт-Петербург</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Новосибирск</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Другие города</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Поиск Инвестора</a></li>
-                        </ul>
+                        <div class="container_dropdown">
+                          <ul class="menu_dropdown">
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Москва</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Санкт-Петербург</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Новосибирск</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Другие города</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Поиск Инвестора</a></li>
+                          </ul>
+                        </div>
                       </li>
                       <li>
                         <a class="menu_link" href="#">Продажа бизнеса</a>
-                        <ul class="menu_dropdown">
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Москва</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Санкт-Петербург</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Новосибирск</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Другие города</a></li>
-                          <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
-                          <a href="#">Поиск Инвестора</a></li>
-                        </ul>
+                        <div class="container_dropdown">
+                          <ul class="menu_dropdown">
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Москва</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Санкт-Петербург</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Новосибирск</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Другие города</a></li>
+                            <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
+                            <a href="#">Поиск Инвестора</a></li>
+                          </ul>
+                        </div>
                       </li>
                     </ul>
                   </nav>
@@ -252,16 +258,11 @@
             $('body').toggleClass('lock');
           });
 
-          $('.menu_link').hover(function () {
-     clearTimeout($.data($(this).parent(),'timer'));
-     $('ul',$(this).parent()).stop(true,true).slideDown(200);
-     $($(this).parent()).addClass("focus");
-  }, function () {
-    $.data($(this).parent(),'timer', setTimeout($.proxy(function() {
-      $('ul',$(this).parent()).stop(true,true).slideUp(400);
-    }, $(this).parent()), 100));
-    $($(this).parent()).removeClass("focus");
-  });
+          $('.menu_list li').hover(function() {
+            $(this).addClass('focus');
+          }, function() {
+            $(this).removeClass('focus');            
+          });
 
 
        });

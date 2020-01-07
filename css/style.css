@@ -354,8 +354,13 @@ footer {
 
 /* MDI icons End */
 
-.menu_burger {
+.menu_burger, .container_dropdown  {
     display: none;
+}
+
+.menu_dropdown {
+    opacity: 0;
+    overflow: hidden;
 }
 
 @media (max-width: 310px) {
@@ -482,25 +487,27 @@ footer {
 
 @media (min-width: 768px) {
 
-    .menu_list .menu_dropdown {
-        display: none;
+    .focus .container_dropdown {
+        position: absolute;
+        display: block;
+        top: 100%;
+        padding-top: 28px;
     }
 
-    .menu_dropdown {
-        position: absolute;
-        top: 100%;
+    .focus .menu_dropdown {
+        opacity: 1;
+        overflow: visible;
         width: 200px;
         background: #fff;
         z-index: 5;
         padding: 17px 0 23px;
-        margin-top: 28px;
         box-shadow: 0 13px 16px 0 rgba(0,0,0,.13);
     }
 
     .menu_dropdown::before {
         content: '';
         position: absolute;
-        top: -12px;
+        top: 16px;
         left: 0;
         width: 0;
         height: 0;
@@ -519,7 +526,7 @@ footer {
         color: rgba(255,255,255,.6);
     }
 
-    .focus li {
+    .menu_dropdown li {
         margin: 10px 0 0 15px;
     }
 
