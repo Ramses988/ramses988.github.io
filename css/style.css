@@ -183,12 +183,7 @@ footer {
     text-transform: uppercase;
 }
 
-.post-line-time-day, .post-line-time-month {
-    display: block;
-    line-height: 1;
-}
-
-time-month {
+.post-line-time-day, .post-line-time-month, time-month {
     display: block;
     line-height: 1;
 }
@@ -221,10 +216,6 @@ time-month {
     height: 100%;
     background-color: transparent;
     z-index: 2;
-}
-
-.sign_up {
-    padding-left: 25px;
 }
 
 .sign_up > button {
@@ -328,7 +319,6 @@ time-month {
 
 .mdi-menu-right:before {
     content: "\f35f";
-    color: #fff
 }
 
 .mdi-chevron-down:before {
@@ -366,6 +356,12 @@ time-month {
 
 .menu_burger {
     display: none;
+}
+
+@media (max-width: 310px) {
+    .logo {
+        display: none;
+    }
 }
 
 @media (max-width: 767px) {
@@ -426,6 +422,10 @@ time-month {
         padding: 8px 0 8px 0;
     }
 
+    .menu_body {
+        justify-content: space-between;
+    }
+
     .menu_burger {
         display: block;
         position: relative;
@@ -482,6 +482,56 @@ time-month {
 
 @media (min-width: 768px) {
 
+    .menu_list .menu_dropdown {
+        display: none;
+    }
+
+    .menu_dropdown {
+        position: absolute;
+        top: 100%;
+        width: 200px;
+        background: #fff;
+        z-index: 5;
+        padding: 17px 0 23px;
+        margin-top: 28px;
+        box-shadow: 0 13px 16px 0 rgba(0,0,0,.13);
+    }
+
+    .menu_dropdown::before {
+        content: '';
+        position: absolute;
+        top: -12px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 12px 0 0 18px;
+        border-color: transparent transparent transparent #fff;
+    }
+
+    .menu_dropdown .mdi-menu-right::before {
+        font-size: 21px;
+        color: #b7b7b7;
+        vertical-align: middle;
+    }
+
+    .focus > a {
+        color: rgba(255,255,255,.6);
+    }
+
+    .focus li {
+        margin: 10px 0 0 15px;
+    }
+
+    .item_dropdown a {
+        color: #151515;
+        text-decoration: none;
+    }
+
+    .item_dropdown:hover .mdi-menu-right::before, .item_dropdown:hover a {
+        color: #1087eb;
+    }
+
     .menu.fixed {
         position: fixed;
         min-height: 75px;
@@ -493,26 +543,6 @@ time-month {
         min-height: 75px;
     }
 
-    .fixed #btn_sign_up  {
-        background-color: transparent;
-        padding: 7px;
-        color: #1087eb;
-        border: 2px solid #1087eb;    
-    }
-    
-    .fixed #btn_sign_up:hover  {
-        padding: 7px;
-        color: #fff;
-        background-color: #1087eb;    
-    }
-
-    .menu.fixed {
-        position: fixed;
-        min-height: 75px;
-        background-color: #fff;
-        box-shadow: 0 3px 16px 0 rgba(0,0,0,.1);
-    }
-    
     .fixed #btn_sign_up  {
         background-color: transparent;
         padding: 7px;
@@ -534,6 +564,10 @@ time-month {
         color: #000;
     }
 
+    .fixed .focus>.menu_link {
+        color: #1087eb;
+    }
+
     .container_menu {
         display: flex;
         justify-content: space-between;        
@@ -541,6 +575,10 @@ time-month {
 
     .menu_body {
         justify-content: space-between;
+    }
+
+    .sign_up {
+        padding-left: 25px;
     }
 
     #fl-item1, #fl-item3 {
