@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru-RU">
     <head>
         <title>Search Partners</title>
@@ -29,7 +29,7 @@
                         <a class="menu_link" href="#">Главная</a>
                       </li>
                       <li>
-                        <a class="menu_link" href="#">Поиск инвестора</a>
+                        <a class="menu_link cl" href="#">Поиск инвестора</a>
                         <div class="container_dropdown">
                           <ul class="menu_dropdown">
                             <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
@@ -46,7 +46,7 @@
                         </div>
                       </li>
                       <li>
-                        <a class="menu_link" href="#">Поиск партнера</a>
+                        <a class="menu_link cl" href="#">Поиск партнера</a>
                         <div class="container_dropdown">
                           <ul class="menu_dropdown">
                             <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
@@ -63,7 +63,7 @@
                         </div>
                       </li>
                       <li>
-                        <a class="menu_link" href="#">Продажа бизнеса</a>
+                        <a class="menu_link cl" href="#">Продажа бизнеса</a>
                         <div class="container_dropdown">
                           <ul class="menu_dropdown">
                             <li class="item_dropdown"><span class="mdi mdi-menu-right"></span>
@@ -256,7 +256,13 @@
           $('.menu_burger').click(function() {
             $('nav').toggleClass('menu_active');
             $('body').toggleClass('lock');
-          });
+           });
+
+           $('.cl').click(function (e) {
+               e.preventDefault();
+               $(this).addClass('focus');
+               $(this).find('.container_dropdown').stop().show('slow');
+           })
 
           $('.menu_list li').hover(function() {
             $(this).addClass('focus');
