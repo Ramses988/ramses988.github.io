@@ -228,17 +228,16 @@ footer {
     z-index: 5;
 }
 
-#btn_sign_up {
+#btn_sign_up  {
     background-color: transparent;
-    padding: 7px;
-    border: 2px solid rgba(255,255,255,.2);
+    padding: 8px;
+    color: #1087eb;
+    border: 2px solid #1087eb;    
 }
 
-#btn_sign_up:hover {
-    color: #1087eb;
-    background-color: #fff;
-    border-color: #fff;
-
+#btn_sign_up:hover  {
+    color: #fff;
+    background-color: #1087eb;    
 }
 
 #btn_register {
@@ -279,7 +278,7 @@ footer {
 }
 
 .menu_link {
-    color: #fff;
+    color: #000;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: .1em;
@@ -358,13 +357,92 @@ footer {
     text-decoration: none;
 }
 
+#header_block {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: #1087eb;
+}
+
+#header_block h3 {
+    color: #fff;
+    font-size: 24px;
+    line-height: 1.5;
+    letter-spacing: .025em;
+    font-weight: 300;
+}
+
+#header_fl {
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+    background: #f3f4f9;
+}
+
+.post_menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post_menu > * {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.post_menu li {
+    position: relative;
+    display: inline-block;
+    color: #9a9a9a;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: .05em;
+    vertical-align: middle;
+}
+
+.post_menu a {
+    color: #1087eb;
+    text-decoration: none;
+}
+
+.post_menu a:after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    right: 0;
+    top: 50%;
+    transform: translate3d(0,-50%,0);
+    background: #cbcbcb;
+}
+
+.post_menu a:hover {
+    color: #9a9a9a;
+}
+
 @media (max-width: 310px) {
     .logo {
         display: none;
     }
 }
 
+@media (min-width: 576px) {
+
+    #header_fl {
+        padding: 23px 0;
+    }
+
+}
+
 @media (max-width: 767px) {
+
+    #header_block h3 {
+        padding-top: 55px;
+    }
+
+    #header_block {
+        padding: 20px 0;
+    }
 
     .mdi-menu-right:before {
         display: none;
@@ -503,6 +581,28 @@ footer {
 
 @media (min-width: 768px) {
 
+    .page_main #btn_sign_up {
+        background-color: transparent;
+        color: #fff;
+        padding: 7px;
+        border: 2px solid rgba(255,255,255,.2);
+    }
+
+    .page_main #btn_sign_up:hover {
+        color: #1087eb;
+        background-color: #fff;
+        border-color: #fff;
+    
+    }
+
+    .page_main .menu_link {
+        color: #fff;
+    }
+
+    #header_block {
+        padding: 30px 0 37px;
+    }
+
     .menu_list li {
         list-style: none;
         margin: 10px 0 0 30px;
@@ -538,9 +638,13 @@ footer {
         font-size: 21px;
         color: #b7b7b7;
         vertical-align: middle;
-    }
+    }  
 
     .focus > a {
+        color: #1087eb;
+    }
+
+    .page_main .focus > a {
         color: rgba(255,255,255,.6);
     }
 
@@ -565,13 +669,13 @@ footer {
 
     .fixed #btn_sign_up  {
         background-color: transparent;
-        padding: 7px;
+        padding: 8px;
         color: #1087eb;
         border: 2px solid #1087eb;    
     }
     
     .fixed #btn_sign_up:hover  {
-        padding: 7px;
+        padding: 8px;
         color: #fff;
         background-color: #1087eb;    
     }
@@ -725,6 +829,11 @@ footer {
 }
 
 @media(min-width:992px) {
+
+    /*.container {
+        max-width: 960px;
+    }*/
+
     .jc-decoration {
         width: calc(100% - 120px)
     }
@@ -735,6 +844,13 @@ footer {
 }
 
 @media(min-width:1200px) {
+
+    #header_block h3 {
+        font-size: 36px;
+        line-height: 1.33333;
+        letter-spacing: .025em;
+        font-family: ubuntu,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,sans-serif;
+    }
     
     .jumbotron-creative-title {
         max-width: 100%;
