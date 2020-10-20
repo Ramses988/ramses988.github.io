@@ -28,6 +28,16 @@ ul {
     padding: 0;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+h5 {
+	margin-top: 0;
+    margin-bottom: 0;
+    font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 .jc-decoration {
     position: relative;
     max-width: 540px;
@@ -342,6 +352,22 @@ footer {
     vertical-align: middle;
 }
 
+.mdi-eye:before {
+    content: "\f208";
+	min-width: 20px;
+    color: #1087eb;
+    font-size: 21px;
+    vertical-align: middle;
+}
+
+.mdi-comment-outline:before {
+    content: "\f182";
+	min-width: 20px;
+    color: #1087eb;
+    font-size: 21px;
+    vertical-align: middle;
+}
+
 .hidden > .mdi {
     display: none;
 }
@@ -416,8 +442,195 @@ footer {
     background: #cbcbcb;
 }
 
+.icon-item {
+	font-size: 15px;
+}
+
 .post_menu a:hover {
     color: #9a9a9a;
+}
+
+.block_table {
+	margin-top: 30px;
+	margin-bottom: 39px;
+}
+
+.table_posts {
+	width: 100%;
+	letter-spacing: .025em;
+}
+
+.table_posts tr {
+	border-top: 1px solid #d6d6d6;
+}
+
+.table_posts tr:last-child {
+	border-bottom: 1px solid #d6d6d6;
+}
+
+.block_table tr {
+	height: 102px;
+}
+
+.table_posts tr:hover {
+	background: #f3f4f9;
+	box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.15);
+	border-color: #f3f4f9;
+}
+	
+.table_posts tr:hover + tr {
+	border-color: #f3f4f9;
+}
+
+.table_posts tr:last-child:hover {
+	border-color: #f3f4f9;
+}
+
+.table_posts td {
+    padding: 14px 20px;
+}
+
+h5 a {
+	text-decoration: none;
+}
+
+h5 a:hover {
+	color: #1087eb;
+}
+
+.table_column1:first-child {
+    width: 12%;
+    padding: 0;
+}
+
+.table_column1:first-child > * {
+	white-space: nowrap;
+	display: block;
+    padding: 16px 18px 16px 30px;
+	border-right: 1px solid #d6d6d6;
+	font-size: 14px;
+}
+
+.post_title > p {
+	margin: 5px 0 10px 0;
+	font-size: 14px;
+	color: #9a9a9a;
+}
+
+.header_title {
+	font-size: 18px;
+    line-height: 1.38889;
+	font-weight: 400;
+}
+
+.main_post {
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: -24px;
+    margin-left: -24px;
+}
+
+.post_title {
+	flex-grow: 1;
+}
+
+.main_post > * {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 24px;
+    margin-left: 24px;
+}
+
+figure {
+    margin: 0 0 1rem;
+}
+
+.figure-user {
+    flex-shrink: 0;
+    min-width: 58px;
+    text-align: center;
+	position: relative;
+}
+
+.avatar {
+	width: 50px;
+    min-width: 50px;
+    height: 50px;
+	border-radius: 50%;
+}
+
+.avatar span {
+	font-weight: 500;
+	color: #fff;
+	font-size: 27px;
+	margin: 0;
+    position: absolute;
+    top: 52%;
+    left: 45%;
+    transform: translate(-50%, -50%) 
+}
+
+
+#pagination {
+	text-align: center !important;
+    flex-wrap: wrap;
+    font-size: 0;
+    line-height: 0;
+    margin-bottom: 75px;
+    margin-left: -6px;
+	padding-left: 0;
+    list-style: none;
+    border-radius: 0;
+}
+
+#pagination > * {
+    margin-top: 0;
+    margin-bottom: 6px;
+    margin-left: 6px;
+}
+
+#pagination a {
+	text-decoration: none;
+}
+
+.page-link:hover, .page-link:focus, .page-link:active {
+	color: #ffffff;
+	background-color: #1087eb;
+	border-color: #1087eb;
+	box-shadow: none;
+}
+
+.page-item.active > .page-link, .page-item.active > .page-link:hover, .page-item.active > .page-link:focus, .page-item.active > .page-link:active {
+    color: #ffffff;
+    background-color: #1087eb;
+    border-color: #1087eb;
+}
+
+.page-link {
+	position: relative;
+	margin-left: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    padding: 5px 12px;
+    border: 1px solid #e0e0e0;
+    line-height: 2;
+    background-color: #ffffff;
+    color: #000000;
+    transition: .15s;
+}
+
+.page-item {
+    display: inline-flex;
+    vertical-align: middle;
+    text-align: center;
+    font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-transform: uppercase;
 }
 
 @media (max-width: 310px) {
@@ -435,6 +648,10 @@ footer {
 }
 
 @media (max-width: 767px) {
+	
+	.table_column1 {
+	display: none;
+	}
 
     #header_block h3 {
         padding-top: 55px;
@@ -809,6 +1026,14 @@ footer {
         max-width: 380px;
         transform: translate3d(0,-60%,0);
     }
+}
+
+@media(max-width:992px) {
+	
+	.table_column3, .table_column4 {
+	display: none;
+	}
+	
 }
 
 @media(min-width:768px) and (max-width:992px) {
