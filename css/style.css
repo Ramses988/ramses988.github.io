@@ -525,7 +525,6 @@ h5 a:hover {
 
 .main_post {
 	display: flex;
-    flex-wrap: wrap;
     align-items: center;
     margin-bottom: -24px;
     margin-left: -24px;
@@ -636,6 +635,44 @@ figure {
 @media (max-width: 310px) {
     .logo {
         display: none;
+    }
+}
+
+@media (max-width: 550px) {
+    .avatar span {
+        font-size: 19px;
+    }
+
+    .avatar {
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+    }
+
+    .avatar span {
+        top: 53%;
+        left: 50%;
+    }
+
+    .figure-user {
+        min-width: 0px;
+    }
+
+    .main_post {
+        margin-bottom: -5px;
+    }
+
+    .main_post > * {
+        margin-bottom: 0px;
+        margin-left: 20px;
+    }
+
+    .header_title {
+        font-size: 15px;
+    }
+
+    .block_table tr {
+        height: 0px;
     }
 }
 
