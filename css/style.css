@@ -783,6 +783,9 @@ p .link-press {
 		flex-direction: column;
 		justify-content: center;
 	}
+	.hours-hidden {
+		display: none;
+	}
 }
 
 @media (min-width: 576px) {
@@ -2230,7 +2233,6 @@ html a.icon-filled-brand:active, html a.icon-filled-brand:focus, html a.icon-fil
 
 .table-job-offers {
 	letter-spacing: .025em;
-	color: #151515;
 }
 
 .table-job-offers tbody {
@@ -2254,7 +2256,6 @@ html a.icon-filled-brand:active, html a.icon-filled-brand:focus, html a.icon-fil
 }
 
 .table-job-offers-main {
-	min-width: 360px;
 	width: 71.5%;
 }
 
@@ -2265,6 +2266,7 @@ html a.icon-filled-brand:active, html a.icon-filled-brand:focus, html a.icon-fil
 
 .table-job-offers-date:first-child > * {
 	display: block;
+	color: #000;
 	padding: 16px 18px 16px 30px;
 	border-right: 1px solid #d6d6d6;
 }
@@ -3583,7 +3585,6 @@ textarea.form-input {
 }
 
 .form-layout-search .form-wrap-button .button {
-	width: 100%;
 	min-height: inherit;
 }
 
@@ -3873,7 +3874,7 @@ textarea.form-input {
 .post-creative-meta {
 	justify-content: space-between;
 	border-bottom: 1px solid #e0e0e0;
-	padding: 20px 0;
+	padding: 0 0 20px 0;
 }
 
 .post-creative-meta p a {
@@ -4071,7 +4072,6 @@ textarea.form-input {
 }
 
 .post-light-title {
-	max-width: 170px;
 	color: #151515;
 }
 
@@ -4198,14 +4198,6 @@ textarea.form-input {
 
 * + .post-minimal-time {
 	margin-top: 14px;
-}
-
-@media (max-width: 575.98px) {
-	.post-minimal {
-		max-width: 370px;
-		margin-left: auto;
-		margin-right: auto;
-	}
 }
 
 @media (min-width: 768px) {
@@ -6451,7 +6443,6 @@ p.footer-creative-title {
 
 .comment-time {
 	display: block;
-	font-weight: 500;
 	color: #151515;
 }
 
@@ -7261,7 +7252,6 @@ p.profile-minimal-position {
 
 .company-light {
 	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
 	margin-bottom: -24px;
 	margin-left: -24px;
@@ -8221,7 +8211,7 @@ html [class*='section-'].section-bottom-0 {
 		padding: 56px 0 56px;
 	}
 	.section-md {
-		padding: 90px 0 95px;
+		padding: 70px 0 95px;
 	}
 	.section-lg {
 		padding: 100px 0;
@@ -13724,3 +13714,68 @@ yx-axis
 		height: 385px;
 	}
 }
+
+
+/* Start my code*/
+
+.avatar {
+	width: 30px;
+    min-width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	position: relative;
+}
+
+.avatar span {
+	font-weight: 500;
+	color: #fff;
+	font-size: 23px;
+	margin: 0;
+	position: absolute;
+	top: 41%;
+    left: 52%;
+    transform: translate(-50%, -50%) 
+}
+
+.comment-avatar {
+	width: 40px;
+    min-width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	position: relative;
+}
+
+.comment-avatar span {
+	font-weight: 500;
+	color: #fff;
+	font-size: 25px;
+	margin: 0;
+	position: absolute;
+	top: 46%;
+    left: 52%;
+    transform: translate(-50%, -50%) 
+}
+
+@media (max-width: 991px) {
+	.td-hidden {
+		display: none;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.post-minimal {
+		max-width: 370px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.company-light-figure {
+		min-width: 0px;
+	}
+
+	.table-job-offers td {
+		padding: 14px 10px;
+	}
+}
+
+/* End my code */

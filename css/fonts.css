@@ -4381,6 +4381,7 @@
 
 .mdi-clock:before {
 	content: "\f246";
+	color: #1087eb;
 }
 
 .mdi-clock-end:before {
