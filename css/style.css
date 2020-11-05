@@ -13717,6 +13717,38 @@ yx-axis
 
 /* Start my code*/
 
+#users-seach {
+	background-color: orange;
+}
+
+#users-list {
+	background-color: orchid;
+}
+
+#block-messages {
+	height: 37vw;
+	background-color: green;
+}
+
+#text-message {
+	min-height: 150px;
+	background-color: blue;
+}
+
+#container-messages {
+	display: flex;
+}
+
+#message-left {
+	flex: 0 0 27%;
+	max-width: 27%;
+}
+
+#message-right {
+	flex: 0 0 73%;
+	max-width: 73%;
+}
+
 .avatar {
 	width: 30px;
     min-width: 30px;
