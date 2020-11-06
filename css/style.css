@@ -13645,12 +13645,22 @@ yx-axis
 }
 
 @media (min-width: 992px) {
+
+	#block-messages {
+		height: calc(100vh - 145px);
+	}
+
 	.google-map {
 		height: 360px;
 	}
 }
 
 @media (min-width: 1200px) {
+
+	#block-messages {
+		height: calc(100vh - 145px);
+	}
+
 	.google-map {
 		height: 440px;
 	}
@@ -13717,6 +13727,10 @@ yx-axis
 
 /* Start my code*/
 
+#block-messages {
+	background-color: green;
+}
+
 #users-seach {
 	background-color: orange;
 }
@@ -13725,13 +13739,8 @@ yx-axis
 	background-color: orchid;
 }
 
-#block-messages {
-	height: 37vw;
-	background-color: green;
-}
-
 #text-message {
-	min-height: 150px;
+	height: 70px;
 	background-color: blue;
 }
 
@@ -13806,6 +13815,18 @@ yx-axis
 
 @media (max-width: 767px) {
 
+	#block-messages {
+		height: calc(100vh - 125px);
+	}
+
+	#message-left {
+		display: none;
+	}
+
+	#message-right {
+		min-width: 100%;
+	}
+
 	.col-md-none {
 		display: none;
 	}
@@ -13813,6 +13834,19 @@ yx-axis
 }
 
 @media (min-width: 767px) and (max-width: 991px) {
+
+	#block-messages {
+		height: calc(100vh - 125px);
+	}
+
+	#message-left {
+		display: none;
+	}
+
+	#message-right {
+		min-width: 100%;
+	}
+
 	.col-sub {
 		max-width: 100%;
 		padding-left: 0px;
