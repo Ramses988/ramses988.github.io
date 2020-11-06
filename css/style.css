@@ -13717,16 +13717,44 @@ yx-axis
 
 /* Start my code*/
 
-#users-seach {
-	background-color: orange;
+.message-light {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+}
+
+.message-light-title {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.message-light:hover {
+	background: #f3f4f9;
+	box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.15);
+	border-color: #f3f4f9;
+	cursor: pointer;
+}
+
+#users-list > .selected {
+	background: #f3f4f9;
+	box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.15);
+	border-color: #f3f4f9;
+}
+
+#users-search {
+	min-height: 100px;
 }
 
 #users-list {
-	background-color: orchid;
+	min-height: calc(100% - 340px);
+	max-height: calc(100% - 340px);
+	overflow-y: scroll;
 }
 
 #block-messages {
-	min-height: calc(100% - 200px);
+	min-height: calc(100% - 240px);
+	max-height: calc(100% - 240px);
+	overflow-y: scroll;
 	background-color: green;
 }
 
@@ -13735,8 +13763,13 @@ yx-axis
 	background-color: blue;
 }
 
+#message-three {
+	min-height: 200px;
+}
+
 #container-messages {
 	display: flex;
+	margin-top: 40px;;
 }
 
 #message-left {
@@ -13836,7 +13869,8 @@ yx-axis
 	}
 
 	#block-messages {
-		min-height: calc(100% - 150px);
+		min-height: calc(90% - 190px);
+		max-height: calc(90% - 190px);
 		background-color: green;
 	}
 
