@@ -13717,6 +13717,26 @@ yx-axis
 
 /* Start my code*/
 
+.user-answer, .user-question {
+	padding: 15px;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.15);
+}
+
+.user-answer {
+	max-width: 70%;
+	color: #000;
+	margin: 0 0 15px 50px;
+	border: 1px solid gainsboro;
+}
+
+.user-question {
+	max-width: 70%;
+	color: #fff;
+	margin: 0 50px 15px 30%;
+	background-color: #1087eb;
+}
+
 .message-light {
 	display: flex;
 	align-items: center;
@@ -13728,43 +13748,113 @@ yx-axis
 	font-weight: 600;
 }
 
-.message-light:hover {
-	background: #f3f4f9;
+.message-light:hover, .selected-user {
+	background: #1087eb;
 	box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.15);
-	border-color: #f3f4f9;
+	border-color: #1087eb;
+	color: #fff;
 	cursor: pointer;
 }
 
-#users-list > .selected {
-	background: #f3f4f9;
-	box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.15);
-	border-color: #f3f4f9;
+.message-light:hover h5 {
+	color: #fff;
+}
+
+.selected-user h5 {
+	color: #fff;
 }
 
 #users-search {
-	min-height: 100px;
+	min-height: 50px;
+}
+
+#users-search > input {
+	font-size: 14px;
+    line-height: normal;
+    border: 1px solid #F2F2F2;
+    border-radius: 2px;
+    padding: 6px 26px 6px 30px;
+	margin: 0;
+	display: block;
+    width: 100%;
+    height: 35px;
+	background-color: #F2F2F2;
+	background-image: url(C:/Users/Roman/Desktop/SearchPartnersForBsines/ramses988.github.io/images/IconsetW.png);
+    background-repeat: no-repeat;
+    background-position: -6px -205px;
+}
+
+#users-search > input:active, #users-search > input:focus {
+	background-color: #fff;
+	border: 1px solid gainsboro;
 }
 
 #users-list {
-	min-height: calc(100% - 340px);
-	max-height: calc(100% - 340px);
+	min-height: calc(100% - 290px);
+	max-height: calc(100% - 290px);
 	overflow-y: scroll;
 }
 
 #block-messages {
-	min-height: calc(100% - 240px);
-	max-height: calc(100% - 240px);
+	min-height: calc(100% - 260px);
+	max-height: calc(100% - 260px);
 	overflow-y: scroll;
-	background-color: green;
+	overflow-x: hidden;
 }
 
 #text-message {
-	min-height: 200px;
-	background-color: blue;
+	width: 100%;
+	max-height: 220px;
+}
+
+#sendBtn {
+	color: #1087eb;
+	border: 1px solid #1087eb;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 13px;
+	background: 0 0;
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	top: 80px;
+	padding: 5px 10px 5px 10px;
+}
+
+#sendBtn:hover {
+	background-color: #1087eb;
+	color: #fff;
+}
+
+#content-text-wrapper {
+	position: relative;
+	margin: 20px 40px 0 40px;
+}
+
+#content-text {
+	min-height: 70px;
+	width: 100%;
+	resize: none;
+	border: none;
+    border-bottom: 1px solid #999;
+}
+
+#content-text:focus {
+    border-bottom: 1px solid #1087eb;
+}
+
+.user-answer span {
+	color: #9a9a9a;
+}
+
+.user-question > p {
+	text-align: right;
 }
 
 #message-three {
 	min-height: 200px;
+	max-height: 200px;
+	border-bottom: 1px solid #1087eb;
 }
 
 #container-messages {
@@ -13843,6 +13933,16 @@ yx-axis
 		display: none;
 	}
 
+	.user-answer {
+		max-width: 80%;
+		margin: 0 0 15px 10px;
+	}
+
+	.user-question {
+		max-width: 80%;
+		margin: 0 15px 15px 15%;
+	}
+
 }
 
 @media (min-width: 767px) and (max-width: 991px) {
@@ -13871,7 +13971,6 @@ yx-axis
 	#block-messages {
 		min-height: calc(90% - 190px);
 		max-height: calc(90% - 190px);
-		background-color: green;
 	}
 
 	.td-hidden {
