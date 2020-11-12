@@ -13920,6 +13920,10 @@ yx-axis
     margin-left: auto;
 }
 
+#all-users {
+	display: none;
+}
+
 @media (min-width: 767px) {
 	
 	.label-none {
@@ -13975,6 +13979,24 @@ yx-axis
 
 	.td-hidden {
 		display: none;
+	}
+
+	#all-users {
+		display: block;
+		margin-top: 15px;
+		border: 1px solid #1087eb;
+	}
+
+	#all-users > p {
+		color: #000;
+		font-size: 18px;
+    	line-height: 1.45;
+    	font-weight: 400;
+		padding: 7px;
+	}
+
+	#container-messages {
+		margin-top: 20px;
 	}
 }
 
