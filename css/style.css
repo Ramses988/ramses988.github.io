@@ -13849,6 +13849,7 @@ yx-axis
 
 .user-question > p {
 	text-align: right;
+	color: gainsboro !important; 
 }
 
 #message-three {
@@ -13969,12 +13970,12 @@ yx-axis
 	}
 
 	#text-message {
-		min-height: 150px;
+		min-height: 120px;
 	}
 
 	#block-messages {
-		min-height: calc(90% - 190px);
-		max-height: calc(90% - 190px);
+		min-height: calc(90% - 200px);
+		max-height: calc(90% - 200px);
 	}
 
 	.td-hidden {
@@ -13984,19 +13985,26 @@ yx-axis
 	#all-users {
 		display: block;
 		margin-top: 15px;
-		border: 1px solid #1087eb;
+		border-bottom: 1px solid #1087eb;
 	}
 
 	#all-users > p {
-		color: #000;
+		color: #9a9a9a;
 		font-size: 18px;
     	line-height: 1.45;
-    	font-weight: 400;
+    	font-weight: 600;
 		padding: 7px;
 	}
 
 	#container-messages {
 		margin-top: 20px;
+	}
+
+	#contacts {
+		color: #000;
+		cursor: pointer;
+		letter-spacing: .05em;
+		margin-left: 7px;
 	}
 }
 
