@@ -1252,14 +1252,33 @@
           node = plugins.countdown[i],
           countdown = aCountdown({
             node:  node,
-            from:  node.getAttribute( 'data-from' ),
-            to:    node.getAttribute( 'data-to' ),
-            count: node.getAttribute( 'data-count' ),
+            from:  node.getAttribute('data-from'),
+            to:    node.getAttribute('data-to'),
+            count: node.getAttribute('data-count'),
             tick:  100,
           });
       }
     }
 
+    // My Code
+    var block = document.getElementById("block-messages");
+    block.scrollTop = block.scrollHeight;
+
+    $('#contacts').click(function() {
+      if ($(window).width() < 991) {
+        $('#message-left').addClass('active');
+        $('#all-users').hide();
+      }
+    });
+
+    $('.click-user').click(function() {
+      if ($(window).width() < 991) {
+        $('#message-left').removeClass('active');
+        $('#all-users').show();
+      }
+      $('.selected-user').removeClass('selected-user');
+      $(this).addClass('selected-user');
+    });
+
   });
 }());
-

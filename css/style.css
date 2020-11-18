@@ -9357,7 +9357,7 @@ html.tablet .ui-to-top {
 .rd-navbar-wrap, .rd-navbar,
 .rd-menu,
 .rd-navbar-nav,
-.rd-navbar-panel, .rd-navbar-static .rd-menu, .rd-navbar-fixed .rd-navbar-nav-wrap, .rd-navbar-fixed .rd-navbar-submenu {
+.rd-navbar-panel, .rd-navbar-static .rd-menu, .rd-navbar-fixed .rd-navbar-nav-wrap, .rd-navbar-fixed .rd-navbar-submenu, .mobile-users {
 	transition: 0.35s all cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 
@@ -13960,8 +13960,17 @@ yx-axis
 
 @media (max-width: 991px) {
 
-	#message-left {
-		display: none;
+	.mobile-users {
+		position: fixed;
+		width: 90%;
+		max-width: 350px !important;
+		background-color: #fff;
+		z-index: 1015;
+		transform: translateX(-150%);
+	}
+
+	.mobile-users.active {
+		transform: translateX(0);
 	}
 
 	#message-right {
@@ -13983,7 +13992,7 @@ yx-axis
 	}
 
 	#all-users {
-		display: block;
+		display: none;
 		margin-top: 15px;
 		border-bottom: 1px solid #1087eb;
 	}
@@ -14004,7 +14013,7 @@ yx-axis
 		color: #000;
 		cursor: pointer;
 		letter-spacing: .05em;
-		margin-left: 7px;
+		margin-left: 7px;   
 	}
 }
 
@@ -14017,6 +14026,7 @@ yx-axis
 
 	.company-light-figure {
 		min-width: 0px;
+		margin-right: 10px;
 	}
 
 	.table-job-offers td {
