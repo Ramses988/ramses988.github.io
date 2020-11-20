@@ -13925,10 +13925,47 @@ yx-axis
 	display: none;
 }
 
+.list-marked-1 a:hover {
+	text-decoration: underline;
+}
+
+.foot-col-6 {
+	flex: 0 0 50%;
+    max-width: 60%;
+}
+
+.footer-mdi {
+	display: none;
+}
+
 @media (min-width: 767px) {
 	
 	.label-none {
 		margin-top: 6px;
+	}
+
+	.footer-block_item1 {
+		flex: 0 0 25%;
+		max-width: 25%;
+	}
+
+	.footer-block_item2 {
+		flex: 0 0 25%;
+		max-width: 25%;
+	}
+
+	.footer-block_item3 {
+		flex: 0 0 25%;
+		max-width: 25%;
+	}
+
+	.footer-block_items {
+		margin: 0 auto;
+	}
+
+	#footer-block_row {
+		display: flex;
+		padding-bottom: 20px;
 	}
 }
 
@@ -13948,6 +13985,24 @@ yx-axis
 		margin: 0 15px 15px 15%;
 	}
 
+	.item-hidden {
+		display: none;
+	}
+
+	.hidden {
+		padding-top: 20px;
+	}
+
+	.footer-creative-main {
+		padding: 0;
+	}
+
+	.footer-mdi {
+		display: inline;
+		font-size: 18px;
+		vertical-align: bottom;
+	}
+
 }
 
 @media (min-width: 767px) and (max-width: 991px) {
@@ -13955,6 +14010,20 @@ yx-axis
 		max-width: 100%;
 		padding-left: 0px;
 		padding-right: 6px;
+	}
+
+	.footer-block_item1 {
+		flex: 0 0 40%;
+		max-width: 40%;
+	}
+
+	.footer-block_item3 {
+		flex: 0 0 40%;
+		max-width: 40%;
+	}
+
+	.footer-block_item2 {
+		display: none;
 	}
 } 
 
@@ -13992,7 +14061,6 @@ yx-axis
 	}
 
 	#all-users {
-		display: none;
 		margin-top: 15px;
 		border-bottom: 1px solid #1087eb;
 	}

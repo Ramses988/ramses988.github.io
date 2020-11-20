@@ -1261,9 +1261,6 @@
     }
 
     // My Code
-    var block = document.getElementById("block-messages");
-    block.scrollTop = block.scrollHeight;
-
     $('#contacts').click(function() {
       if ($(window).width() < 991) {
         $('#message-left').addClass('active');
@@ -1279,6 +1276,37 @@
       $('.selected-user').removeClass('selected-user');
       $(this).addClass('selected-user');
     });
+
+    $('.full-click').click(function() {
+      if ($(window).width() < 768) {
+        if ($(this).parent().hasClass('opened')) {
+          $(this).parent().removeClass('opened');
+        } else {
+          $('.rd-navbar-nav').find('.opened').removeClass('opened');
+          $(this).parent().addClass('opened');
+        }
+      }
+      return false;
+    });
+
+    $(".hidden").click(function () {
+      if ($(window).width() < 768) {
+          var element = $(this).parent().find('.item-hidden');
+          var currentElement = $(this).find('.mdi');
+          element.slideToggle(500);
+          if (currentElement.hasClass('mdi-chevron-right')) {
+              currentElement.toggleClass('mdi-chevron-down');
+              currentElement.removeClass('mdi-chevron-right');
+          } else {
+              currentElement.removeClass('mdi-chevron-down');
+              currentElement.toggleClass('mdi-chevron-right');
+          }
+          $('.item-hidden').not($(element)).slideUp();
+          $('.hidden').not($(this)).find('.mdi').removeClass('mdi-chevron-right');
+          $('.hidden').not($(this)).find('.mdi').removeClass('mdi-chevron-down');
+          $('.hidden').not($(this)).find('.mdi').toggleClass('mdi-chevron-right');
+      }
+  });
 
   });
 }());
