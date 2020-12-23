@@ -13,12 +13,8 @@
     isIE = userAgent.indexOf("msie") !== -1 ? parseInt(userAgent.split("msie")[1], 10) : userAgent.indexOf("trident") !== -1 ? 11 : userAgent.indexOf("edge") !== -1 ? 12 : false,
     isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent),
     isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-    windowReady = false,
     isNoviBuilder = false,
     plugins = {
-      bootstrapTooltip: $("[data-toggle='tooltip']"),
-      bootstrapModalDialog: $('.modal'),
-      bootstrapTabs: $(".tabs-custom"),
       captcha: $('.recaptcha'),
       campaignMonitor: $('.campaign-mailform'),
       copyrightYear: $(".copyright-year"),
@@ -35,12 +31,7 @@
       searchResults: $('.rd-search-results'),
       viewAnimate: $('.view-animate'),
       wow: $(".wow"),
-      selectFilter: $(".select"),
-      maps: $(".google-map-container"),
-      counter:                 document.querySelectorAll( '.counter' ),
-      progressLinear:          document.querySelectorAll( '.progress-linear' ),
-      progressCircle:          document.querySelectorAll( '.progress-circle' ),
-      countdown:               document.querySelectorAll( '.countdown' )
+      selectFilter: $(".select")
     };
 
   /**
@@ -72,114 +63,6 @@
 
   // Initialize scripts that require a loaded page
   $window.on('load', function () {
-
-    // Counter
-    if ( plugins.counter ) {
-      for ( var i = 0; i < plugins.counter.length; i++ ) {
-        var
-          node = plugins.counter[i],
-          counter = aCounter({
-            node: node,
-            duration: node.getAttribute( 'data-duration' ) || 1000
-          }),
-          scrollHandler = (function() {
-            if ( Util.inViewport( this ) && !this.classList.contains( 'animated-first' ) ) {
-              this.counter.run();
-              this.classList.add( 'animated-first' );
-            }
-          }).bind( node ),
-          blurHandler = (function() {
-            this.counter.params.to = parseInt( this.textContent, 10 );
-            this.counter.run();
-          }).bind( node );
-
-        if ( isNoviBuilder ) {
-          node.counter.run();
-          node.addEventListener( 'blur', blurHandler );
-        } else {
-          scrollHandler();
-          window.addEventListener( 'scroll', scrollHandler );
-        }
-      }
-    }
-
-    // Progress Bar
-    if ( plugins.progressLinear ) {
-      for ( var i = 0; i < plugins.progressLinear.length; i++ ) {
-        var
-          container = plugins.progressLinear[i],
-          counter = aCounter({
-            node: container.querySelector( '.progress-linear-counter' ),
-            duration: container.getAttribute( 'data-duration' ) || 1000,
-            onStart: function() {
-              this.custom.bar.style.width = this.params.to + '%';
-            }
-          });
-
-        counter.custom = {
-          container: container,
-          bar: container.querySelector( '.progress-linear-bar' ),
-          onScroll: (function() {
-            if ( ( Util.inViewport( this.custom.container ) && !this.custom.container.classList.contains( 'animated' ) ) || isNoviBuilder ) {
-              this.run();
-              this.custom.container.classList.add( 'animated' );
-            }
-          }).bind( counter ),
-          onBlur: (function() {
-            this.params.to = parseInt( this.params.node.textContent, 10 );
-            this.run();
-          }).bind( counter )
-        };
-
-        if ( isNoviBuilder ) {
-          counter.run();
-          counter.params.node.addEventListener( 'blur', counter.custom.onBlur );
-        } else {
-          counter.custom.onScroll();
-          document.addEventListener( 'scroll', counter.custom.onScroll );
-        }
-      }
-    }
-
-    // Progress Circle
-    if ( plugins.progressCircle ) {
-      for ( var i = 0; i < plugins.progressCircle.length; i++ ) {
-        var
-          container = plugins.progressCircle[i],
-          counter = aCounter({
-            node: container.querySelector( '.progress-circle-counter' ),
-            duration: 500,
-            onUpdate: function( value ) {
-              this.custom.bar.render( value * 3.6 );
-            }
-          });
-
-        counter.params.onComplete = counter.params.onUpdate;
-
-        counter.custom = {
-          container: container,
-          bar: aProgressCircle({ node: container.querySelector( '.progress-circle-bar' ) }),
-          onScroll: (function() {
-            if ( Util.inViewport( this.custom.container ) && !this.custom.container.classList.contains( 'animated' ) ) {
-              this.run();
-              this.custom.container.classList.add( 'animated' );
-            }
-          }).bind( counter ),
-          onBlur: (function() {
-            this.params.to = parseInt( this.params.node.textContent, 10 );
-            this.run();
-          }).bind( counter )
-        };
-
-        if ( isNoviBuilder ) {
-          counter.run();
-          counter.params.node.addEventListener( 'blur', counter.custom.onBlur );
-        } else {
-          counter.custom.onScroll();
-          window.addEventListener( 'scroll', counter.custom.onScroll );
-        }
-      }
-    }
 
     // Material Parallax
     if (plugins.materialParallax.length) {
@@ -391,168 +274,6 @@
       }
     };
 
-    /**
-     * @desc Initialize Bootstrap tooltip with required placement
-     * @param {string} tooltipPlacement
-     */
-    function initBootstrapTooltip(tooltipPlacement) {
-      plugins.bootstrapTooltip.tooltip('dispose');
-
-      if (window.innerWidth < 576) {
-        plugins.bootstrapTooltip.tooltip({placement: 'bottom'});
-      } else {
-        plugins.bootstrapTooltip.tooltip({placement: tooltipPlacement});
-      }
-    }
-
-    /**
-     * @desc Google map function for getting latitude and longitude
-     */
-    function getLatLngObject(str, marker, map, callback) {
-      var coordinates = {};
-      try {
-        coordinates = JSON.parse(str);
-        callback(new google.maps.LatLng(
-          coordinates.lat,
-          coordinates.lng
-        ), marker, map)
-      } catch (e) {
-        map.geocoder.geocode({'address': str}, function (results, status) {
-          if (status === google.maps.GeocoderStatus.OK) {
-            var latitude = results[0].geometry.location.lat();
-            var longitude = results[0].geometry.location.lng();
-
-            callback(new google.maps.LatLng(
-              parseFloat(latitude),
-              parseFloat(longitude)
-            ), marker, map)
-          }
-        })
-      }
-    }
-
-    /**
-     * @desc Initialize Google maps
-     */
-    function initMaps() {
-      var key;
-
-      for ( var i = 0; i < plugins.maps.length; i++ ) {
-        if ( plugins.maps[i].hasAttribute( "data-key" ) ) {
-          key = plugins.maps[i].getAttribute( "data-key" );
-          break;
-        }
-      }
-
-      $.getScript('//maps.google.com/maps/api/js?'+ ( key ? 'key='+ key + '&' : '' ) +'sensor=false&libraries=geometry,places&v=quarterly', function () {
-        var head = document.getElementsByTagName('head')[0],
-          insertBefore = head.insertBefore;
-
-        head.insertBefore = function (newElement, referenceElement) {
-          if (newElement.href && newElement.href.indexOf('//fonts.googleapis.com/css?family=Roboto') !== -1 || newElement.innerHTML.indexOf('gm-style') !== -1) {
-            return;
-          }
-          insertBefore.call(head, newElement, referenceElement);
-        };
-        var geocoder = new google.maps.Geocoder;
-        for (var i = 0; i < plugins.maps.length; i++) {
-          var zoom = parseInt(plugins.maps[i].getAttribute("data-zoom"), 10) || 11;
-          var styles = plugins.maps[i].hasAttribute('data-styles') ? JSON.parse(plugins.maps[i].getAttribute("data-styles")) : [];
-          var center = plugins.maps[i].getAttribute("data-center") || "New York";
-
-          // Initialize map
-          var map = new google.maps.Map(plugins.maps[i].querySelectorAll(".google-map")[0], {
-            zoom: zoom,
-            styles: styles,
-            scrollwheel: false,
-            center: {lat: 0, lng: 0}
-          });
-
-          // Add map object to map node
-          plugins.maps[i].map = map;
-          plugins.maps[i].geocoder = geocoder;
-          plugins.maps[i].keySupported = true;
-          plugins.maps[i].google = google;
-
-          // Get Center coordinates from attribute
-          getLatLngObject(center, null, plugins.maps[i], function (location, markerElement, mapElement) {
-            mapElement.map.setCenter(location);
-          });
-
-          // Add markers from google-map-markers array
-          var markerItems = plugins.maps[i].querySelectorAll(".google-map-markers li");
-
-          if (markerItems.length){
-            var markers = [];
-            for (var j = 0; j < markerItems.length; j++){
-              var markerElement = markerItems[j];
-              getLatLngObject(markerElement.getAttribute("data-location"), markerElement, plugins.maps[i], function(location, markerElement, mapElement){
-                var icon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
-                var activeIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active");
-                var info = markerElement.getAttribute("data-description") || "";
-                var infoWindow = new google.maps.InfoWindow({
-                  content: info
-                });
-                markerElement.infoWindow = infoWindow;
-                var markerData = {
-                  position: location,
-                  map: mapElement.map
-                }
-                if (icon){
-                  markerData.icon = icon;
-                }
-                var marker = new google.maps.Marker(markerData);
-                markerElement.gmarker = marker;
-                markers.push({markerElement: markerElement, infoWindow: infoWindow});
-                marker.isActive = false;
-                // Handle infoWindow close click
-                google.maps.event.addListener(infoWindow,'closeclick',(function(markerElement, mapElement){
-                  var markerIcon = null;
-                  markerElement.gmarker.isActive = false;
-                  markerIcon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
-                  markerElement.gmarker.setIcon(markerIcon);
-                }).bind(this, markerElement, mapElement));
-
-
-                // Set marker active on Click and open infoWindow
-                google.maps.event.addListener(marker, 'click', (function(markerElement, mapElement) {
-                  if (markerElement.infoWindow.getContent().length === 0) return;
-                  var gMarker, currentMarker = markerElement.gmarker, currentInfoWindow;
-                  for (var k =0; k < markers.length; k++){
-                    var markerIcon;
-                    if (markers[k].markerElement === markerElement){
-                      currentInfoWindow = markers[k].infoWindow;
-                    }
-                    gMarker = markers[k].markerElement.gmarker;
-                    if (gMarker.isActive && markers[k].markerElement !== markerElement){
-                      gMarker.isActive = false;
-                      markerIcon = markers[k].markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon")
-                      gMarker.setIcon(markerIcon);
-                      markers[k].infoWindow.close();
-                    }
-                  }
-
-                  currentMarker.isActive = !currentMarker.isActive;
-                  if (currentMarker.isActive) {
-                    if (markerIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active")){
-                      currentMarker.setIcon(markerIcon);
-                    }
-
-                    currentInfoWindow.open(map, marker);
-                  }else{
-                    if (markerIcon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon")){
-                      currentMarker.setIcon(markerIcon);
-                    }
-                    currentInfoWindow.close();
-                  }
-                }).bind(this, markerElement, mapElement))
-              })
-            }
-          }
-        }
-      });
-    }
-
     // Google ReCaptcha
     if (plugins.captcha.length) {
       $.getScript("//www.google.com/recaptcha/api.js?onload=onloadCaptchaCallback&render=explicit&hl=en");
@@ -571,41 +292,6 @@
       if (isIE < 11) $html.addClass("ie-10");
     }
 
-    // Bootstrap Tooltips
-    if (plugins.bootstrapTooltip.length) {
-      var tooltipPlacement = plugins.bootstrapTooltip.attr('data-placement');
-      initBootstrapTooltip(tooltipPlacement);
-
-      $window.on('resize orientationchange', function () {
-        initBootstrapTooltip(tooltipPlacement);
-      })
-    }
-
-    // Stop vioeo in bootstrapModalDialog
-    if (plugins.bootstrapModalDialog.length) {
-      for (var i = 0; i < plugins.bootstrapModalDialog.length; i++) {
-        var modalItem = $(plugins.bootstrapModalDialog[i]);
-
-        modalItem.on('hidden.bs.modal', $.proxy(function () {
-          var activeModal = $(this),
-            rdVideoInside = activeModal.find('video'),
-            youTubeVideoInside = activeModal.find('iframe');
-
-          if (rdVideoInside.length) {
-            rdVideoInside[0].pause();
-          }
-
-          if (youTubeVideoInside.length) {
-            var videoUrl = youTubeVideoInside.attr('src');
-
-            youTubeVideoInside
-              .attr('src', '')
-              .attr('src', videoUrl);
-          }
-        }, modalItem))
-      }
-    }
-
     // Popovers
     if (plugins.popover.length) {
       if (window.innerWidth < 767) {
@@ -620,11 +306,6 @@
     // Copyright Year (Evaluates correct copyright year)
     if (plugins.copyrightYear.length) {
       plugins.copyrightYear.text(initialDate.getFullYear());
-    }
-
-    // Google maps
-    if( plugins.maps.length ) {
-      lazyInit( plugins.maps, initMaps );
     }
 
     // Add custom styling options for input[type="radio"]
@@ -1015,161 +696,6 @@
       }
     }
 
-    // RD Mailform
-    if (plugins.rdMailForm.length) {
-      var i, j, k,
-        msg = {
-          'MF000': 'Successfully sent!',
-          'MF001': 'Recipients are not set!',
-          'MF002': 'Form will not work locally!',
-          'MF003': 'Please, define email field in your form!',
-          'MF004': 'Please, define type of your form!',
-          'MF254': 'Something went wrong with PHPMailer!',
-          'MF255': 'Aw, snap! Something went wrong.'
-        };
-
-      for (i = 0; i < plugins.rdMailForm.length; i++) {
-        var $form = $(plugins.rdMailForm[i]),
-          formHasCaptcha = false;
-
-        $form.attr('novalidate', 'novalidate').ajaxForm({
-          data: {
-            "form-type": $form.attr("data-form-type") || "contact",
-            "counter": i
-          },
-          beforeSubmit: function (arr, $form, options) {
-            if (isNoviBuilder)
-              return;
-
-            var form = $(plugins.rdMailForm[this.extraData.counter]),
-              inputs = form.find("[data-constraints]").add($('[data-constraints][form="' + form.attr('id') + '"]')),
-              output = $("#" + form.attr("data-form-output")),
-              captcha = form.find('.recaptcha').add($('.recaptcha[form=' + form.attr('id') + ']')),
-              captchaFlag = true;
-
-            if (form.attr('id')) {
-              console.log(inputs);
-              inputs.add($('[data-constraints][form="' + form.attr('id') + '"]'));
-              captcha.add($('.recaptcha[form=' + form.attr('id') + ']'));
-            }
-
-            output.removeClass("active error success");
-
-            if (isValidated(inputs, captcha)) {
-
-              // verify reCaptcha
-              if (captcha.length) {
-                var captchaToken = captcha.find('.g-recaptcha-response').val(),
-                  captchaMsg = {
-                    'CPT001': 'Please, setup you "site key" and "secret key" of reCaptcha',
-                    'CPT002': 'Something wrong with google reCaptcha'
-                  };
-
-                formHasCaptcha = true;
-
-                $.ajax({
-                  method: "POST",
-                  url: "bat/reCaptcha.php",
-                  data: {'g-recaptcha-response': captchaToken},
-                  async: false
-                })
-                  .done(function (responceCode) {
-                    if (responceCode !== 'CPT000') {
-                      if (output.hasClass("snackbars")) {
-                        output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>' + captchaMsg[responceCode] + '</span></p>')
-
-                        setTimeout(function () {
-                          output.removeClass("active");
-                        }, 3500);
-
-                        captchaFlag = false;
-                      } else {
-                        output.html(captchaMsg[responceCode]);
-                      }
-
-                      output.addClass("active");
-                    }
-                  });
-              }
-
-              if (!captchaFlag) {
-                return false;
-              }
-
-              form.addClass('form-in-process');
-
-              if (output.hasClass("snackbars")) {
-                output.html('<p><span class="icon text-middle fa fa-circle-o-notch fa-spin icon-xxs"></span><span>Sending</span></p>');
-                output.addClass("active");
-              }
-            } else {
-              return false;
-            }
-          },
-          error: function (result) {
-            if (isNoviBuilder)
-              return;
-
-            var output = $("#" + $(plugins.rdMailForm[this.extraData.counter]).attr("data-form-output")),
-              form = $(plugins.rdMailForm[this.extraData.counter]);
-
-            output.text(msg[result]);
-            form.removeClass('form-in-process');
-
-            if (formHasCaptcha) {
-              grecaptcha.reset();
-            }
-          },
-          success: function (result) {
-            if (isNoviBuilder)
-              return;
-
-            var form = $(plugins.rdMailForm[this.extraData.counter]),
-              output = $("#" + form.attr("data-form-output")),
-              select = form.find('select');
-
-            form
-              .addClass('success')
-              .removeClass('form-in-process');
-
-            if (formHasCaptcha) {
-              grecaptcha.reset();
-            }
-
-            result = result.length === 5 ? result : 'MF255';
-            output.text(msg[result]);
-
-            if (result === "MF000") {
-              if (output.hasClass("snackbars")) {
-                output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>' + msg[result] + '</span></p>');
-              } else {
-                output.addClass("active success");
-              }
-            } else {
-              if (output.hasClass("snackbars")) {
-                output.html(' <p class="snackbars-left"><span class="icon icon-xxs mdi mdi-alert-outline text-middle"></span><span>' + msg[result] + '</span></p>');
-              } else {
-                output.addClass("active error");
-              }
-            }
-
-            form.clearForm();
-
-            if (select.length) {
-              select.select2("val", "");
-            }
-
-            form.find('input, textarea').trigger('blur');
-
-            setTimeout(function () {
-              output.removeClass("active error success");
-              form.removeClass('success');
-            }, 3500);
-          }
-        });
-      }
-    }
-
     // Select2
     if (plugins.selectFilter.length) {
       for (var i = 0; i < plugins.selectFilter.length; i++) {
@@ -1182,21 +708,6 @@
           maximumSelectionSize: 3,
           dropdownCssClass: select.attr("data-dropdown-class") ? select.attr("data-dropdown-class") : ''
         });
-      }
-    }
-
-    // Countdown
-    if ( plugins.countdown.length ) {
-      for ( var i = 0; i < plugins.countdown.length; i++) {
-        var
-          node = plugins.countdown[i],
-          countdown = aCountdown({
-            node:  node,
-            from:  node.getAttribute('data-from'),
-            to:    node.getAttribute('data-to'),
-            count: node.getAttribute('data-count'),
-            tick:  100,
-          });
       }
     }
 
